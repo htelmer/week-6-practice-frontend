@@ -2,7 +2,8 @@ import HeroBanner from "../../components/HeroBanner";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSpaces } from "../../store/HomePage/actions";
-import SpaceCard from "../../components/SpaceCard/SpaceCard";
+import { NavLink } from "react-router-dom";
+//import SpaceCard from "../../components/SpaceCard/SpaceCard";
 
 import { getSpaces, getLoading } from "../../store/HomePage/selectors";
 
@@ -33,7 +34,11 @@ export default function Home() {
               >
                 {" "}
                 <h2>{space.title}</h2> <p>{space.description}</p>{" "}
-                <button>Visit Space</button>{" "}
+                <NavLink to={`spaces/${space.id}`}>
+                  <button onClick={() => getSpaces(space.id)}>
+                    Visit Space
+                  </button>{" "}
+                </NavLink>
               </div>
             ))}
       </HeroBanner>
